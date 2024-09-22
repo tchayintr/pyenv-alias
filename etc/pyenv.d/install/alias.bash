@@ -5,6 +5,10 @@
 # This will allow you to install multiple versions of a given python version,
 # perhaps built with different configure flags.
 
+update_prefix_with_version_alias() {
+  PREFIX="$(dirname ${PREFIX})/${VERSION_ALIAS}"
+}
+
 if [ -n "${VERSION_ALIAS}" ]; then
-  VERSION_NAME="${VERSION_ALIAS##*/}"
+    before_install 'update_prefix_with_version_alias'
 fi
